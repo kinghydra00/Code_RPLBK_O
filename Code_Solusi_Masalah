@@ -1,0 +1,45 @@
+abstract class Karyawan {
+    public abstract double hitungGaji(int jamKerja);
+}
+
+class KaryawanTetap extends Karyawan {
+    @Override
+    public double hitungGaji(int jamKerja) {
+        return 100000 * jamKerja;
+    }
+}
+
+class KaryawanKontrak extends Karyawan {
+    @Override
+    public double hitungGaji(int jamKerja) {
+        return 80000 * jamKerja;
+    }
+}
+
+// Karyawan Freelance
+class KaryawanFreelance extends Karyawan {
+    @Override
+    public double hitungGaji(int jamKerja) {
+        return 50000 * jamKerja;
+    }
+}
+
+class ProsesGaji {
+    public double hitung(Karyawan karyawan, int jamKerja) {
+        return karyawan.hitungGaji(jamKerja);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Karyawan karyawanTetap = new KaryawanTetap();
+        Karyawan karyawanKontrak = new KaryawanKontrak();
+        Karyawan karyawanFreelance = new KaryawanFreelance();
+
+        ProsesGaji proses = new ProsesGaji();
+
+        System.out.println("Gaji Karyawan Tetap: " + proses.hitung(karyawanTetap, 10));
+        System.out.println("Gaji Karyawan Kontrak: " + proses.hitung(karyawanKontrak, 10));
+        System.out.println("Gaji Karyawan Freelance: " + proses.hitung(karyawanFreelance, 10));
+    }
+}
